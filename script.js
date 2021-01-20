@@ -11,6 +11,9 @@ console.log(txtAreaArr[1].hour);
 // check hour in each textarea
 for (let i = 0; i < txtAreaArr.length; i++) {
     console.log(txtAreaArr[i].dataset.hour);
-    if 
-    
+    if (txtAreaArr[i].dataset.hour == currentHour) { txtAreaArr[i].classList.add("present");}
+    if (txtAreaArr[i].dataset.hour > currentHour) { txtAreaArr[i].classList.add("future");}
+    if (txtAreaArr[i].dataset.hour < currentHour) { txtAreaArr[i].classList.add("past");}
+
+
 }
