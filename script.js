@@ -1,11 +1,14 @@
+
+var localStorage = window.localStorage;
+var txtAreaArr = $("textarea");
+populateTextAreas(localStorage);
 // get current hour
-let currentHour = new Date(Date.now()).getHours();
+var currentHour = new Date(Date.now()).getHours();
 //let currentHour = dateTime.getHours();
 console.log(`Current hour is ${currentHour}`);
 
-let txtAreaArr = $("textarea");
 // console.log(txtAreaArr);
-console.log(txtAreaArr[1].hour);
+//console.log(txtAreaArr[1].hour);
 // console.log($("textarea"));
 
 // check hour in each textarea and add a time class
@@ -16,10 +19,16 @@ for (let i = 0; i < txtAreaArr.length; i++) {
     if (txtAreaArr[i].dataset.hour < currentHour) { txtAreaArr[i].classList.add("past");}
 
     //test code
-    // test access parent node
+    // access parent node
     let parent = txtAreaArr[i].parentElement;
     // console.log(parent);
-    //var textArea = parent.getElementsByTagName("textarea")[0];
+    let textAreaId = parent.getElementsByTagName("textarea")[0].id;
+    console.log(`AreaId = ${textAreaId}`);
+    let textAreaValue = parent.getElementsByTagName("textarea")[0].innerHTML;
+    console.log(`Stored text = ${textAreaValue}`);
+    parent.getElementsByTagName("textarea")[0].value = localStorage.getItem(textAreaId);
+    console.log(`loggeg value is ${textAreaValue}`); // 
+    
     var btnSave = parent.getElementsByTagName("button")[0];
 
     btnSave.addEventListener("click", logClick)
@@ -34,5 +43,12 @@ function  logClick(event) {
     localStorage.setItem(txtId,txtValue)
 }
 
-let localStorage = window.localStorage;
 console.log(`local storage ${localStorage}`);
+
+function populateTextAreas(localStorage) {
+    for (let i = 0; i < localStorage.length-1; i++) {
+        // const element = localStorage[i-1];
+        console.log(localStorage.get);
+    }
+
+}
